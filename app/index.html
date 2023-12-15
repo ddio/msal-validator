@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>Microsoft identity platform</title>
+  <link rel="SHORTCUT ICON" href="./favicon.svg" type="image/x-icon">
+
+  <!-- msal.min.js can be used in the place of msal.js; included msal.js to make debug easy -->
+  <script src="https://alcdn.msauth.net/browser/2.30.0/js/msal-browser.js"
+    integrity="sha384-o4ufwq3oKqc7IoCcR08YtZXmgOljhTggRwxP2CLbSqeXGtitAxwYaUln/05nJjit"
+    crossorigin="anonymous"></script>
+
+  <!-- adding Bootstrap 4 for UI components  -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="SHORTCUT ICON" href="https://c.s-microsoft.com/favicon.ico?v2" type="image/x-icon">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/">Microsoft Authentication Library playground</a>
+    <div class="btn-group ml-auto dropleft">
+      <button type="button" id="SignIn" class="btn btn-secondary d-none" onclick="signIn()">
+        Sign In
+      </button>
+    </div>
+  </nav>
+  <br>
+  <h2 class="card-header text-center">All-in-one Azure app registrations config validator</h2>
+  <p class="card-text text-center">This UI provide login capability once app config is provided.</p>
+  <br>
+  <div class="row" style="margin:auto">
+    <div id="card-div" class="col-md-3" style="display:block">
+      <div class="card">
+        <h5 class="card-header">App registration setting</h5>
+        <div class="card-body">
+          <p class="card-text">Please follow
+            <a href="https://learn.microsoft.com/en-us/entra/identity-platform/scenario-spa-app-registration#redirect-uri-msaljs-20-with-auth-code-flow">MSAL.js 2.0 with auth code flow</a>
+            instruction to setup your app registration and fill in the form below.
+          <p>
+          <form onsubmit="event.preventDefault(); updateConfig()">
+            <div class="form-group">
+              <label for="clientId">Client ID:</label>
+              <input type="text" class="form-control" id="clientId" required>
+            </div>
+            <div class="form-group">
+              <label for="tenantId">Tenant ID:</label>
+              <input type="text" class="form-control" id="tenantId" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="welcome" class="col-md-3 d-none">
+      <div class="card">
+        <h5 class="card-header">Welcome!</h5>
+        <div class="card-body">
+          <p class="card-text">Hi <span id="userName"></span></p>
+          <button onclick="signOut()" class="btn btn-primary">Sign Out</button>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+  </div>
+  <br>
+  <br>
+
+  <!-- importing bootstrap.js and supporting js libraries -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+  <!-- importing app scripts (load order is important) -->
+  <script type="text/javascript" src="./authConfig.js"></script>
+  <!-- <script type="text/javascript" src="./graphConfig.js"></script> -->
+  <script type="text/javascript" src="./ui.js"></script>
+
+  <!-- <script type="text/javascript" src="./authRedirect.js"></script>   -->
+  <!-- uncomment the above line and comment the line below if you would like to use the redirect flow -->
+  <script type="text/javascript" src="./authPopup.js"></script>
+  <!-- <script type="text/javascript" src="./graph.js"></script> -->
+</body>
+
+</html>
