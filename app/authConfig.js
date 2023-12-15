@@ -6,11 +6,13 @@
 const msalConfig = {
     auth: {
         // 'Application (client) ID' of app registration in Azure portal - this value is a GUID
-        clientId: "ec8a9949-23e3-4534-be32-8a901add47f3",
+        clientId: "",
         // Full directory URL, in the form of https://login.microsoftonline.com/<tenant-id>
-        authority: "https://login.microsoftonline.com/750d8fcd-0479-4419-b072-e14dd85308d3",
+        authority: "",
         // Full redirect URL, in form of http://localhost:3000
-        redirectUri: "http://localhost:5500/",
+        // redirectUri: "http://localhost:5500/",
+        // redirectUri: "http://localhost:8000",
+        redirectUri: "https://ddio.github.io/msal-validator",
     },
     cache: {
         cacheLocation: "sessionStorage", // This configures where your cache will be stored

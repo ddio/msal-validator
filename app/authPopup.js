@@ -1,6 +1,7 @@
 // Create the main myMSALObj instance
 // configuration parameters are located at authConfig.js
 let myMSALObj = null;
+// myMSALObj = new msal.PublicClientApplication(msalConfig);
 
 let username = "";
 
@@ -83,10 +84,6 @@ function selectAccount() {
      * See here for more info on account retrieval: 
      * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-common/docs/Accounts.md
      */
-    // if (!myMSALObj) {
-    //     myMSALObj = new msal.PublicClientApplication(msalConfig);
-    // }
-    // console.log('??', myMSALObj)
     const currentAccounts = myMSALObj.getAllAccounts();
     if (currentAccounts.length === 0) {
         return;
